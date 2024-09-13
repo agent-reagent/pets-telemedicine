@@ -2,7 +2,7 @@ import streamlit as st
 import os
 from groq import Groq
 from key import API_KEY
-
+from langchain_community.tools import BraveSearch
 
 client = Groq(
     api_key= API_KEY ,
@@ -27,11 +27,9 @@ chat_completion = client.chat.completions.create(
 
 
 
-if st.button("Submit"):
-    st.write(f"LLM Response")
-    st.write(chat_completion.choices[0].message.content)
+st.write(f"LLM Response")
+st.write(chat_completion.choices[0].message.content)
 
 
-# Show a footer message
-st.write("Thank you for using my app!")
+
 
